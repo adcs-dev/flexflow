@@ -1,85 +1,73 @@
-# ⚖️ FlexFlow — SaaS de Gestão Jurídica
+# FlexFlow — Gestão Jurídica Inteligente
 
-> Protótipo de plataforma SaaS para escritórios de advocacia e departamentos jurídicos: dashboard de métricas, controle de prazos, alertas de vencimento e gestão de clientes/processos — com foco em compliance e produtividade.
+> Protótipo de plataforma para escritórios de advocacia e departamentos jurídicos: dashboard de métricas, controle de prazos, alertas de vencimento e checklist de compliance LGPD. Tudo derivado de dados reais, sem números fixos de fachada.
 
----
-
-## 💡 Motivação
-
-O FlexFlow é a evolução direta do [Sistema-Juridico](https://github.com/ursa-mango/Sistema-Juridico), meu primeiro protótipo de controle de prazos inspirado na vivência no TJAM.
-
-Enquanto o Sistema-Juridico resolve o problema central de **não perder prazos**, o FlexFlow expande a visão para o que seria um produto completo: uma plataforma que centraliza a operação jurídica, oferece visibilidade por métricas e escala para múltiplos usuários no modelo SaaS.
+**[Acessar o protótipo ao vivo](https://adcs-dev.github.io/flexflow/)**
 
 ---
 
-## 🖥️ Demonstração
+## Motivação
 
-🔗 **[Acesse o protótipo ao vivo](https://ursa-mango.github.io/flexflow/)**
+O FlexFlow nasceu de um problema concreto observado durante minha atuação no Tribunal de Justiça do Amazonas: advogados frequentemente chegavam a atendimentos sem saber o estado atual dos próprios processos, se havia decisão recente, prazo próximo ou manifestação pendente. Prazo perdido é passivo jurídico, e a falta de visibilidade era a raiz do problema.
 
----
-
-## ✅ Funcionalidades
-
-- 📊 **Dashboard com métricas** — visão consolidada de processos, prazos e produtividade
-- 👥 **Gestão de clientes e processos** — cadastro e acompanhamento centralizado
-- ⏰ **Controle de prazos** — registro e monitoramento de datas processuais críticas
-- 🔔 **Alertas de vencimento** — notificações visuais para prazos próximos
-- 🔒 **Conceito de compliance LGPD** — estrutura pensada para tratamento adequado de dados pessoais de clientes e partes
+É a evolução de um protótipo anterior focado apenas em controle de prazos. O FlexFlow expande a ideia para o que seria uma plataforma completa: centralizar a operação jurídica e dar visibilidade por métricas.
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## Funcionalidades
 
-| Tecnologia | Uso |
+- **Dashboard derivado dos dados reais.** Os indicadores (processos ativos, prazos urgentes, concluídos, conformidade LGPD) e o gráfico de status são calculados a partir dos processos cadastrados, não são números fixos.
+- **Gestão de processos.** Cadastro com validação, filtros por status e prioridade, busca por número ou cliente, visualização em modal e exclusão.
+- **Controle de prazos.** Cálculo automático de dias restantes, com destaque visual para vencimentos próximos.
+- **Alertas proativos.** Lista de prazos dos próximos 7 dias, ordenada por urgência.
+- **Checklist LGPD funcional.** A porcentagem de conformidade é calculada conforme os itens marcados, atualizando o dashboard em tempo real.
+- **Persistência local.** Os dados ficam salvos no navegador via LocalStorage.
+
+---
+
+## Decisões técnicas
+
+| Decisão | Motivo |
 |---|---|
-| HTML5 | Estrutura e semântica da interface |
-| CSS3 | Estilização, layout responsivo e componentes visuais |
-| JavaScript | Lógica de negócio, interatividade e manipulação de dados |
-| LocalStorage | Persistência de dados no cliente (adequado para prototipação) |
+| Dashboard calculado, não fixo | Um painel com números de fachada quebra a credibilidade. Tudo reflete os dados reais. |
+| Escape de HTML em todo input | Proteção contra XSS. Dados do usuário nunca são injetados como HTML cru. |
+| Modal de detalhes no lugar de `alert()` | Experiência consistente com o resto da interface. |
+| LocalStorage | Persistência adequada à fase de protótipo, sem backend. |
+| Sem dependências de framework | HTML, CSS e JavaScript puro, para manter o projeto leve e transparente. |
 
 ---
 
-## 🧠 Decisões de produto
+## Tecnologias
 
-O FlexFlow foi concebido com uma pergunta central: *o que um escritório jurídico de pequeno/médio porte realmente precisa para operar com mais controle e menos risco?*
-
-As respostas guiaram as prioridades do protótipo:
-- **Visibilidade** — o dashboard existe porque gestores precisam de uma visão rápida sem abrir processo a processo
-- **Alertas proativos** — prazo perdido é passivo jurídico; o sistema precisa avisar antes, não depois
-- **Simplicidade** — a adoção em escritórios depende de curva de aprendizado baixa
+HTML5, CSS3 (design system com variáveis, layout responsivo) e JavaScript (ES6+, organizado em classe, sem bibliotecas externas além de ícones e fontes).
 
 ---
 
-## 🔗 Relação com o Sistema-Juridico
+## Sobre o uso de IA no desenvolvimento
 
-| | [Sistema-Juridico](https://github.com/ursa-mango/Sistema-Juridico) | FlexFlow |
-|---|---|---|
-| Foco | Controle de prazos | Plataforma jurídica completa |
-| Escopo | Funcionalidade única | Multi-módulo (SaaS) |
-| Público | Usuário individual | Escritórios e equipes |
-| Estágio | Protótipo funcional | Protótipo de produto |
+A concepção, a arquitetura e a lógica de negócio do projeto são minhas, a partir de um problema que observei na prática. Usei assistentes de IA (Claude e ChatGPT) como ferramenta de execução: escrever e revisar trechos de código e acelerar a parte visual, sempre com acompanhamento e correção minha a cada etapa. O resultado reflete decisões de produto que tomei, não saída automática de uma ferramenta.
 
 ---
 
-## 🚀 Próximos passos (backlog)
+## Próximos passos
 
-- [ ] Backend com autenticação e banco de dados real
-- [ ] Multi-tenancy (cada escritório com seu ambiente isolado)
-- [ ] Relatórios exportáveis com dados de produtividade
-- [ ] Módulo de conformidade LGPD com mapeamento de dados pessoais
-- [ ] Integração com sistemas de tribunais via API pública
-
----
-
-## 📄 Licença
-
-Distribuído sob a licença MIT. Veja [LICENSE](./LICENSE) para mais detalhes.
+- [ ] Backend com autenticação e banco de dados
+- [ ] Multi-tenancy (cada escritório com ambiente isolado)
+- [ ] Relatórios exportáveis (PDF, Excel)
+- [ ] Módulo LGPD com mapeamento de dados pessoais
+- [ ] Integração com sistemas de tribunais quando houver API pública
 
 ---
 
-## 👤 Autor
+## Licença
+
+Distribuído sob a licença MIT. Veja [LICENSE](./LICENSE).
+
+---
+
+## Autor
 
 Desenvolvido por **Adriano Selis**
-Estudante de Engenharia de Software | Foco em produtos jurídicos e compliance
+Estudante de Direito e de Engenharia de Software, com foco em produtos jurídicos e compliance.
 
-[![GitHub](https://img.shields.io/badge/GitHub-ursa--mango-181717?style=flat&logo=github)](https://github.com/ursa-mango)
+[GitHub: adcs-dev](https://github.com/adcs-dev)
